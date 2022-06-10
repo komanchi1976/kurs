@@ -1,6 +1,6 @@
-﻿@model GameStore.Domain.Entities.ShippingDetails
+﻿model GameStore.Domain.Entities.ShippingDetails
 
-@{
+{
     ViewBag.Title = "GameStore: форма заказа";
 }
 
@@ -8,21 +8,21 @@
 <p>Пожалуйста введи ваши контактные данные, и мы сразу отправим товар!</p>
 
 
-@using (Html.BeginForm())
+using (Html.BeginForm())
 {
-    @Html.ValidationSummary();
+    Html.ValidationSummary();
     <h3>Данные</h3>
     <div class="form-group">
         <label>Ваше имя:</label>
-        @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+        Html.TextBoxFor(x => x.Name, new { class = "form-control" })
     </div>
 
     <h3>Адрес доставки</h3>
     foreach (var property in ViewData.ModelMetadata.Properties) {
         if (property.PropertyName != "Name" && property.PropertyName != "GiftWrap") {
             <div class="form-group">
-                <label>@(property.DisplayName ?? property.PropertyName)</label>
-                @Html.TextBox(property.PropertyName, null, new { @class = "form-control" })
+                <label>(property.DisplayName ?? property.PropertyName)</label>
+                Html.TextBox(property.PropertyName, null, new { class = "form-control" })
             </div>
         }
     }
@@ -30,7 +30,7 @@
     <h3>Опции</h3>
     <div class="checkbox">
         <label>
-            @Html.EditorFor(x => x.GiftWrap)
+            Html.EditorFor(x => x.GiftWrap)
             Использовать подарочную упаковку?
         </label>
     </div>

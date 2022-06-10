@@ -1,11 +1,11 @@
-﻿@model IEnumerable<string>
+﻿model IEnumerable<string>
 
 <div data-role="navbar">
     <ul>
-        @foreach (var link in Model)
+        foreach (var link in Model)
         {
             <li>
-                @Html.RouteLink(link, new
+                Html.RouteLink(link, new
                 {
                     controller = "Game",
                     action = "List",
@@ -14,7 +14,7 @@
                 }, new
                 {
                     data_transition = "fade",
-                    @class = (link == ViewBag.SelectedCategory ? "ui-btn-active" : null)
+                    class = (link == ViewBag.SelectedCategory ? "ui-btn-active" : null)
                 })
             </li>
         }

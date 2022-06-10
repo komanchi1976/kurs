@@ -1,6 +1,6 @@
-﻿@model IEnumerable<GameStore.Domain.Entities.Game>
+﻿model IEnumerable<GameStore.Domain.Entities.Game>
 
-@{
+{
     ViewBag.Title = "Админ панель: список товаров";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
@@ -17,16 +17,16 @@
                 <th class="text-right">Цена</th>
                 <th class="text-center">Действия</th>
             </tr>
-            @foreach (var item in Model)
+            foreach (var item in Model)
             {
                 <tr>
-                    <td class="text-right">@item.GameId</td>
-                    <td>@Html.ActionLink(item.Name, "Edit", new { item.GameId })</td>
-                    <td class="text-right">@item.Price.ToString("# руб")</td>
+                    <td class="text-right">item.GameId</td>
+                    <td>Html.ActionLink(item.Name, "Edit", new { item.GameId })</td>
+                    <td class="text-right">item.Price.ToString("# руб")</td>
                     <td class="text-center">
-                        @using (Html.BeginForm("Delete", "Admin"))
+                        using (Html.BeginForm("Delete", "Admin"))
                         {
-                            @Html.Hidden("GameId", item.GameId)
+                            Html.Hidden("GameId", item.GameId)
                             <input type="submit"
                                    class="btn btn-default btn-xs"
                                    value="Удалить" />
@@ -37,7 +37,7 @@
         </table>
     </div>
     <div class="panel-footer">
-        @Html.ActionLink("Добавить игру", "Create", null,
-            new { @class = "btn btn-default" })
+        Html.ActionLink("Добавить игру", "Create", null,
+            new { class = "btn btn-default" })
     </div>
 </div>

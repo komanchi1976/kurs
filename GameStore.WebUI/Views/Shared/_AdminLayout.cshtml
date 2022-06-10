@@ -1,4 +1,4 @@
-﻿@{
+﻿{
     Layout = null;
 }
 
@@ -16,11 +16,11 @@
 </head>
 <body>
     <div>
-        @if (TempData["message"] != null)
+        if (TempData["message"] != null)
         {
-            <div class="alert alert-success">@TempData["message"]</div>
+            <div class="alert alert-success">TempData["message"]</div>
         }
-        @RenderBody()
+        RenderBody()
     </div>
 </body>
 </html>

@@ -6,7 +6,7 @@
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
     <link href="~/Content/ErrorStyles.css" rel="stylesheet" />
-    <title>@ViewBag.Title</title>
+    <title>ViewBag.Title</title>
     <style>
         .navbar-right {
             float: right !important;
@@ -22,17 +22,17 @@
             <div class="visible-xs">Game</div>
             <div class="visible-xs">Store</div>
         </a>
-        @Html.Action("Summary", "Cart")
+        Html.Action("Summary", "Cart")
     </div>
     <div class="visible-xs">
-        @Html.Action("Menu", "Nav", new { horizontalNav = true })
+        Html.Action("Menu", "Nav", new { horizontalNav = true })
     </div>
     <div class="row panel">
         <div id="categories" class="col-sm-3 hidden-xs">
-            @Html.Action("Menu", "Nav")
+            Html.Action("Menu", "Nav")
         </div>
         <div class="col-xs-12 col-sm-8">
-            @RenderBody()
+            RenderBody()
         </div>
     </div>
 </body>
