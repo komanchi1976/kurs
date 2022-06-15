@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ShopMVC</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <script src="https://kit.fontawesome.com/b3dd0256d3.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+    <script src="https://localhost:5001/js/site.js"></script>
+</head>
+<body>
+    <header class="headLa">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand  headName" asp-area="" asp-controller="Home" asp-action="Index">ShopMVC</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item itemLiLayout">
+                            <a class="headItem " asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                        @if (User.IsInRole("admin"))
+                        {
+                        <li class="nav-item itemLiLayout">
+                            <a class="headItem " asp-area="" asp-controller="Home" asp-action="AllThisProducts">All tProducts</a>
+                        </li>
+                        }
+                        <li class="nav-item itemLiLayout">
+                            <a class="headItem " asp-area="" asp-controller="Home" asp-action="AllProducts">All Products</a>
+                        </li>
+                        @if (User.IsInRole("admin"))
+                        {
+                        <li class="nav-item itemLiLayout">
+                            <a class="headItem" asp-area="" asp-controller="Home" asp-action="CreateProduct">Create Product</a>
+                        </li>
+                        }
+                        <li class="nav-item itemLiLayout">
+                            <a class="headItem " asp-area="" asp-controller="Home" asp-action="AllCategories">Categories</a>
+                        </li>
+
+                        <li class="nav-item itemLiLayout">
+                            <form class="searchItem" asp-controller="Home" asp-action="AllProducts">
+                                <p class="searchFormItem">
+                                    <input class="textFormItem" type="text" placeholder="Search" name="SearchString" />
+                                    <input class="headItem" style="width:auto;" type="submit" value="Search" />
+                                </p>
+                            </form>
+                        </li>
+                    </ul>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                    <a class="nav-link text-dark" asp-controller="Users" asp-action="ViewUserProfile" asp-route-name="@User.Identity.Name" method="post">@User.Identity.Name</a>
+                    <form method="post" asp-controller="Account" asp-action="Logout">
+                        <input class="exitButton" type="submit" value="Выход" />
+                    </form>
+                    }else{
+                    <a class="exitButton" style="background-color: lightgreen; margin-right: 5px; width: auto " asp-area="" asp-controller="Account" asp-action="Register">Register</a>
+                    <a class="exitButton" style="background-color: lightyellow;margin-right: 5px; width: auto " asp-area="" asp-controller="Account" asp-action="Login" align="left">Login</a>
+                    
+                    }
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container mainContent">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            <div class="social">
+                <a rel="noreferrer" href="#!" target="_blank">
+                    <i class="fa-brands fa-twitter fa-xs"></i>
+                </a>
+                <a rel="noreferrer" href="#!" target="_blank">
+                    <i class="fa-brands fa-linkedin fa-xs"></i>
+                </a>
+                <a rel="noreferrer" href="#!" target="_blank">
+                    <i class="fa-brands fa-telegram fa-xs"></i>
+                </a>
+                <a rel="noreferrer" href="#!" target="_blank">
+                    <i class="fa-brands fa-github fa-xs"></i>
+                </a>
+            </div>
+            <p class="footer__text"> &copy; 2022 - Projects developed by <a class="urlGit" rel="noreferrer" href="https://github.com/komanchi1976/" target="_blank">Andrei Harazhanka</a> </p>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

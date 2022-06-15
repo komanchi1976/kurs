@@ -1,0 +1,22 @@
+﻿@model ShopMVC.Models.OrderModel
+@{
+    ViewBag.Title = "Create order";
+}
+<form asp-action='BuyProduct' asp-controller='Home'>
+    <div class="form-group">
+        <label asp-for="NameBuyer" class="control-label">Имя покупателя</label>
+        <input type="text" readonly asp-for="NameBuyer" class="form-control" value="@User.Identity.Name"/>
+    </div>
+    <div class="form-group">
+        <label asp-for="NameProduct" class="control-label">Название товара</label>
+        <input type="text" asp-for="NameProduct" class="form-control" value="@Model.NameProduct"/>
+    </div>
+    <div class="form-group">
+        <label asp-for="Address" class="control-label">Адрес отправки</label>
+        <input type="text" asp-for="Address" class="form-control"/>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Отправить" class="btn btn-primary" />
+    </div>
+
+</form>
